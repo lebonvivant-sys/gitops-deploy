@@ -88,7 +88,7 @@ pipeline {
     post {
         always {
             script {
-//                withEnv(["PATH+OC=${tool 'oc-tools'}"])
+                withEnv(["PATH+OC=${tool 'oc-tools'}"])
                 openshift.withCluster() {
                     echo("Delete project ${env.PRJ}") 
                     openshift.delete("project/${env.PRJ}")

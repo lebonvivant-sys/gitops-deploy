@@ -17,7 +17,9 @@ pipeline {
             steps {
                 script {
                     // Uncomment to get lots of debugging output
-                    withEnv(["PATH+OC=${tool 'oc-tools'}"])
+                    withEnv(["PATH+OC=${tool 'oc-tools'}"]){
+                    	bash "echo $PATH"
+                    }
                     openshift.logLevel(1)
                     openshift.withCluster() {
                         echo("Create project ${env.PRJ}") 

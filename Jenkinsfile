@@ -17,9 +17,9 @@ pipeline {
             steps {
                 script {
                     // Uncomment to get lots of debugging output
-                    withEnv(["PATH+OC=${tool 'oc-tools'}"]){
-                     sh "echo \$PATH"
-                    }
+                    //withEnv(["PATH+OC=${tool 'oc-tools'}"]){
+                    // sh "echo \$PATH"
+                    //}
                     openshift.logLevel(1)
                     openshift.withCluster() {
                         echo("Create project ${env.PRJ}") 
@@ -37,9 +37,9 @@ pipeline {
         stage('build') {
             steps {
                 script {
-                    withEnv(["PATH+OC=${tool 'oc-tools'}"]){
-                     sh "echo \$PATH"
-                    }
+                    //withEnv(["PATH+OC=${tool 'oc-tools'}"]){
+                    // sh "echo \$PATH"
+                   // }
                     openshift.withCluster() {
                         openshift.withProject("${env.PRJ}") {
                             def bc = openshift.selector('bc', "${env.APP}")
@@ -61,9 +61,9 @@ pipeline {
         stage('deploy') {
             steps {
                 script {
-                    withEnv(["PATH+OC=${tool 'oc-tools'}"]){
-                     sh "echo \$PATH"
-                    }
+                    //withEnv(["PATH+OC=${tool 'oc-tools'}"]){
+                    // sh "echo \$PATH"
+                    //}
                     openshift.withCluster() {
                         openshift.withProject("${env.PRJ}") {
                             echo("Expose route for service ${env.APP}") 

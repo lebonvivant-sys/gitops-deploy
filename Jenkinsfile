@@ -4,6 +4,7 @@ pipeline {
         DOMAIN='apps.cluster-dev.klaverviertjes.nl'
         PRJ="hello-${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
         APP='nodeapp'
+       PATH = "/usr/bin:${env.PATH}"
     }
     agent {
       node {

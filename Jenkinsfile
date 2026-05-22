@@ -21,7 +21,8 @@ pipeline {
                     //withEnv(["PATH+OC=${tool 'oc-tools'}"]){
                     //echo $PATH
                     //}
-                    sh 'printenv'
+                    //sh 'printenv'
+                     echo("PATH is:  ${env.PATH}") 
                     //openshift.logLevel(1)
                     openshift.withCluster() {
                         echo("Create project ${env.PRJ}") 

@@ -37,7 +37,9 @@ pipeline {
         stage('build') {
             steps {
                 script {
-                    withEnv(["PATH+OC=${tool 'oc-tools'}"])
+                    withEnv(["PATH+OC=${tool 'oc-tools'}"]){
+                     sh "echo \$PATH"
+                    }
                     openshift.withCluster() {
                         openshift.withProject("${env.PRJ}") {
                             def bc = openshift.selector('bc', "${env.APP}")
@@ -59,7 +61,9 @@ pipeline {
         stage('deploy') {
             steps {
                 script {
-                    withEnv(["PATH+OC=${tool 'oc-tools'}"])
+                    withEnv(["PATH+OC=${tool 'oc-tools'}"]){
+                     sh "echo \$PATH"
+                    }
                     openshift.withCluster() {
                         openshift.withProject("${env.PRJ}") {
                             echo("Expose route for service ${env.APP}") 
@@ -90,8 +94,11 @@ pipeline {
     post {
         always {
             script {
-                withEnv(["PATH+OC=${tool 'oc-tools'}"])
+                //withEnv(["PATH+OC=${tool 'oc-tools'}"])
                 openshift.withCluster() {
+                    withEnv(["PATH+OC=${tool 'oc-tools'}"]){
+                     sh "echo \$PATH"
+                    }
                     echo("Delete project ${env.PRJ}") 
                     openshift.delete("project/${env.PRJ}")
                 }

@@ -18,7 +18,7 @@ pipeline {
                 script {
                     // Uncomment to get lots of debugging output
                     withEnv(["PATH+OC=${tool 'oc-tools'}"]){
-                    	bash "echo $PATH"
+                     sh "echo \$PATH"
                     }
                     openshift.logLevel(1)
                     openshift.withCluster() {

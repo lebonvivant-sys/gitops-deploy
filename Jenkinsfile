@@ -10,7 +10,7 @@ pipeline {
         label 'nodejs'
       }
     }
-    tools {"OpenShift Client Tools installations" "oc"}
+    tools {OpenShiftClientTools "oc"}
     stages {
         stage('create') {
             steps {

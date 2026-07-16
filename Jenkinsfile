@@ -10,8 +10,15 @@ pipeline {
     agent {
       node {
         label 'nodejs'
-        //withEnv(["PATH+OC=${tool 'oc-tools'}"])
-      }
+        withEnv(["PATH+OC=${tool 'oc-tools'}"])  {
+        openshift.withCluster() {
+            openshift.withProject() {
+                def dcSelector = openshift.selector("dc", "jenkins")
+                dcSelector.describe()
+            }
+        }
+    }
+    }
     }
     //tools {OpenShiftClientTools 'oc-tools'}
     stages {
@@ -20,9 +27,9 @@ pipeline {
                 script {
                     // Uncomment to get lots of debugging output
                     openshift.logLevel(1)
-                    withEnv(["PATH+OC=${tool 'oc-tools'}"]){
-                    echo $PATH
-                    }
+                    //withEnv(["PATH+OC=${tool 'oc-tools'}"]){
+                    //echo $PATH
+                    //}
                     //sh 'printenv'
                      echo("PATH is:  ${env.PATH}") 
                     //openshift.logLevel(1)

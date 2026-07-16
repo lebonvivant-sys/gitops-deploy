@@ -16,7 +16,6 @@ pipeline {
             echo "In project: ${openshift.project()}"
         }
         }
-        }
       }
     }
     //tools {OpenShiftClientTools 'oc-tools'}

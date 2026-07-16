@@ -13,7 +13,7 @@ pipeline {
         //withEnv(["PATH+OC=${tool 'oc-tools'}"])
       }
     }
-    tools {OpenShiftClientTools 'oc-tools'}
+    //tools {OpenShiftClientTools 'oc-tools'}
     stages {
         stage('create') {
             steps {

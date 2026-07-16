@@ -10,14 +10,7 @@ pipeline {
     agent {
       node {
         label 'nodejs'
-        withEnv(["PATH+OC=${tool 'oc-tools'}"])  {
-        openshift.withCluster() {
-            openshift.withProject() {
-                def dcSelector = openshift.selector("dc", "jenkins")
-                dcSelector.describe()
-            }
-        }
-    }
+        //withEnv(["PATH+OC=${tool 'oc-tools'}"])  
     }
     }
     //tools {OpenShiftClientTools 'oc-tools'}

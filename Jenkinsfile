@@ -13,16 +13,16 @@ pipeline {
         //withEnv(["PATH+OC=${tool 'oc-tools'}"])
       }
     }
-    //tools {OpenShiftClientTools 'oc-tools'}
+    tools {OpenShiftClientTools 'oc-tools'}
     stages {
         stage('create') {
             steps {
                 script {
                     // Uncomment to get lots of debugging output
-                    openshift.logLevel(1)
-                    withEnv(["PATH+OC=${tool 'oc-tools'}"]){
-                    echo $PATH
-                    }
+                    //openshift.logLevel(1)
+                    //withEnv(["PATH+OC=${tool 'oc-tools'}"]){
+                    //echo $PATH
+                    //}
                     //sh 'printenv'
                      echo("PATH is:  ${env.PATH}") 
                     //openshift.logLevel(1)

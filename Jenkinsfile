@@ -42,6 +42,7 @@ pipeline {
         }
         stage('build') {
             steps {
+                withEnv(["PATH+OC=${tool 'oc-tools'}"])
                 script {
                     //withEnv(["PATH+OC=${tool 'oc-tools'}"]){
                     // sh "echo \$PATH"
@@ -66,6 +67,7 @@ pipeline {
         }
         stage('deploy') {
             steps {
+                withEnv(["PATH+OC=${tool 'oc-tools'}"])
                 script {
                     //withEnv(["PATH+OC=${tool 'oc-tools'}"]){
                     // sh "echo \$PATH"
@@ -99,6 +101,7 @@ pipeline {
     }
     post {
         always {
+            withEnv(["PATH+OC=${tool 'oc-tools'}"])
             script {
                 //withEnv(["PATH+OC=${tool 'oc-tools'}"])
                 openshift.withCluster() {

@@ -1,7 +1,8 @@
 pipeline {
     environment {
         //DOMAIN='apps.ocp4.example.com'
-        DOMAIN='apps.cluster-dev.klaverviertjes.nl'
+        //DOMAIN='apps.cluster-dev.klaverviertjes.nl'
+        DOMAIN='apps-crc.testing'
         PRJ="hello-${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
         APP='nodeapp'
        PATH = "/usr/bin:${env.PATH}"

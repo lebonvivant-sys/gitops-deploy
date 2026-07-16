@@ -10,13 +10,14 @@ pipeline {
     agent {
       node {
           label 'nodejs'
-                withEnv(["PATH+OC=${tool 'oc-tools'}"])
+                //withEnv(["PATH+OC=${tool 'oc-tools'}"])
           }
     }
     //tools {OpenShiftClientTools 'oc-tools'}
     stages {
         stage('create') {
             steps {
+                withEnv(["PATH+OC=${tool 'oc-tools'}"])
                 script {
                     // Uncomment to get lots of debugging output
                     openshift.logLevel(1)

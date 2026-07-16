@@ -17,7 +17,7 @@ pipeline {
     stages {
         stage('create') {
             steps {
-                withEnv(["PATH+OC=${tool 'oc-tools'}"])
+                withEnv(["PATH+OC=${tool 'oc-tools'}"]) {
                 script {
                     // Uncomment to get lots of debugging output
                     openshift.logLevel(1)
@@ -37,6 +37,7 @@ pipeline {
                             openshift.newApp("${env.GIT_URL}#${env.BRANCH_NAME}", "--strategy source", "--name ${env.APP}")
                         }
                     }
+                }
                 }
             }
         }

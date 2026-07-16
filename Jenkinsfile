@@ -15,8 +15,8 @@ pipeline {
             echo "${openshift.raw( "version" ).out}"
             echo "In project: ${openshift.project()}"
         }
-    }
-}
+        
+      }
     }
     //tools {OpenShiftClientTools 'oc-tools'}
     stages {

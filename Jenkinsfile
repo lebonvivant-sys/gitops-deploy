@@ -43,7 +43,7 @@ pipeline {
         }
         stage('build') {
             steps {
-                withEnv(["PATH+OC=${tool 'oc-tools'}"])
+                withEnv(["PATH+OC=${tool 'oc-tools'}"]){
                 script {
                     //withEnv(["PATH+OC=${tool 'oc-tools'}"]){
                     // sh "echo \$PATH"
@@ -64,11 +64,12 @@ pipeline {
                         }
                     }
                 }
+                }
             }
         }
         stage('deploy') {
             steps {
-                withEnv(["PATH+OC=${tool 'oc-tools'}"])
+                withEnv(["PATH+OC=${tool 'oc-tools'}"]){
                 script {
                     //withEnv(["PATH+OC=${tool 'oc-tools'}"]){
                     // sh "echo \$PATH"
@@ -86,6 +87,7 @@ pipeline {
                             }
                         }
                     }
+                }
                 }
             }
         }

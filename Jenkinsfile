@@ -9,9 +9,14 @@ pipeline {
     }
     agent {
       node {
-        label 'nodejs'
-        //withEnv(["PATH+OC=${tool 'oc-tools'}"])  
+          label 'nodejs'
+          withEnv(["PATH+OC=${tool 'oc-tools}"]) {
+          openshift.withCluster( 'crc' ) {
+            echo "${openshift.raw( "version" ).out}"
+            echo "In project: ${openshift.project()}"
+        }
     }
+}
     }
     //tools {OpenShiftClientTools 'oc-tools'}
     stages {

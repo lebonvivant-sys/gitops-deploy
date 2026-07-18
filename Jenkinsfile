@@ -6,6 +6,7 @@ pipeline {
         PRJ="hello-${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
         APP='nodeapp'
        PATH = "/usr/bin:${env.PATH}"
+        withEnv(["PATH+OC=${tool 'oc-tools'}"])
     }
     agent {
       node {

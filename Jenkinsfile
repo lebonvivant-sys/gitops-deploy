@@ -12,14 +12,14 @@ pipeline {
     agent {
       node {
           label 'nodejs'
-                //withEnv(["PATH+OC=${tool 'oc-tools'}","PATH+GIT=${tool 'git-tools'}"])
           }
     }
     //tools {OpenShiftClientTools 'oc-tools'}
     stages {
         stage('create') {
             steps {
-                withEnv(["PATH+OC=${tool 'oc-tools'}","PATH+GIT=${tool 'git-tools'}"]) {
+                withEnv(["PATH+OC=${tool 'oc-tools'}"]){
+                     withEnv(["PATH+GIT=${tool 'git-tools'}"]){
                 script {
                     // Uncomment to get lots of debugging output
                     openshift.logLevel(1)
@@ -37,6 +37,7 @@ pipeline {
                             openshift.raw('policy', 'add-role-to-user', 'view', 'developer')
                             echo("Create app ${env.APP}") 
                             openshift.newApp("${env.GIT_URL}#${env.BRANCH_NAME}", "--strategy source", "--name ${env.APP}")
+                        }
                         }
                     }
                 }

@@ -12,7 +12,7 @@ pipeline {
     agent {
       node {
           label 'nodejs'
-                //withEnv(["PATH+OC=${tool 'oc-tools'}"])
+                //withEnv(["PATH+OC=${tool 'oc-tools'}"],["PATH+OC=${tool 'git-tools'}"])
           }
     }
     //tools {OpenShiftClientTools 'oc-tools'}
